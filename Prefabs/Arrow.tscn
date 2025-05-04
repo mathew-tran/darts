@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://pxk2uxmfhl2n"]
+
+[ext_resource type="Script" uid="uid://bwoikvrmwf857" path="res://Scripts/Arrow.gd" id="1_448jw"]
+[ext_resource type="Texture2D" uid="uid://bov0e5frlm0ri" path="res://Art/Arrow.png" id="1_ox323"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_448jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_448jw"]
+size = Vector2(2, 3)
+
+[node name="Arrow" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_448jw")
+can_sleep = false
+freeze = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_448jw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ox323")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 2.98023e-08)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_448jw")
+one_way_collision = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+position_smoothing_enabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
