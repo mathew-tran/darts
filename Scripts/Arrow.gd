@@ -3,7 +3,7 @@ extends RigidBody2D
 var StuckRotation = Vector2.ZERO
 var StuckPosition = Vector2.ZERO
 
-signal OnArrowPlaced
+signal OnArrowPlaced(hitPosition)
 
 var bCanUse = true
 var velocity = Vector2.ZERO
@@ -20,8 +20,7 @@ func Release(power):
 	velocity = global_transform.x * power * 20
 	print("release: " + str(power))
 	reparent(Finder.GetItemGroup(), true)
-	$Camera2D.make_current()
-	$Camera2D.enabled = true
+	Finder.GetCamera().Focus(self)
 
 func _process(delta: float) -> void:
 	if not sleeping and velocity.length() > 0:
@@ -64,5 +63,4 @@ func Stop():
 	set_freeze_mode(RigidBody2D.FREEZE_MODE_STATIC)
 	print("sleep")
 	
-	OnArrowPlaced.emit()
-	$Camera2D.queue_free()
+	OnArrowPlaced.emit($SpawnPosition.global_position)

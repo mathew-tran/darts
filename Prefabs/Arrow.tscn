@@ -9,6 +9,7 @@
 size = Vector2(2, 3)
 
 [node name="Arrow" type="RigidBody2D"]
+collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_448jw")
 can_sleep = false
 freeze = true
@@ -26,9 +27,8 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_448jw")
 one_way_collision = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
-position_smoothing_enabled = true
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(-28, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

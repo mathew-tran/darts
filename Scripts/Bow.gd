@@ -11,13 +11,15 @@ func SpawnArrow():
 	ArrowRef = instance
 	instance.OnArrowPlaced.connect(OnArrowPlaced)
 	
-func OnArrowPlaced():
-	$Camera2D.make_current()
-	$Camera2D.enabled = true
+func OnArrowPlaced(newPosition):
+	global_position = newPosition
+	Finder.GetCamera().Focus(self)
 	SpawnArrow()
+	Finder.GetCamera().SetToAuto()
 	
 func _ready() -> void:
-	SpawnArrow()
+	OnArrowPlaced(global_position)
+	
 	
 	
 func _process(delta: float) -> void:
@@ -38,6 +40,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") and bIsDrawing == false:
 		bIsDrawing = true
 		$DrawTimer.start()
+		Finder.GetCamera().SetToAuto()
 		
 	if event.is_action_pressed("right_click"):
 		bIsDrawing = false
@@ -48,6 +51,6 @@ func _input(event: InputEvent) -> void:
 		if is_instance_valid(ArrowRef) and bIsDrawing:
 			$Arrow.Release(power)
 			ArrowRef = null
-			$Camera2D.enabled = false
+			Finder.GetCamera().SetToAuto()
 		bIsDrawing = false
 		$DrawTimer.stop()
