@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsdnb1ghajix8"]
+
+[ext_resource type="Script" uid="uid://crvbkyvxswkdu" path="res://Scripts/PlayerUI.gd" id="1_mr8kr"]
+[ext_resource type="Texture2D" uid="uid://cn6uf0dys20i2" path="res://Art/WindArrow.png" id="2_ekdfu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_mr8kr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0.603922)
+custom_minimum_size = Vector2(80, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "PAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParLimit" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0.603922)
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 80.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+text = "WIND"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindStrength" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer3"]
+custom_minimum_size = Vector2(80, 90)
+layout_mode = 2
+
+[node name="WindDirection" type="TextureRect" parent="VBoxContainer3/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -45.0
+offset_right = 25.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 25)
+texture = ExtResource("2_ekdfu")
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0.603922)
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 50.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "STROKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stroke" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

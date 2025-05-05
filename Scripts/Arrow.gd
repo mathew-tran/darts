@@ -8,6 +8,7 @@ signal OnArrowPlaced(hitPosition)
 var bCanUse = true
 var velocity = Vector2.ZERO
 
+
 func _ready() -> void:
 	# Initial setup
 	freeze = true
@@ -28,6 +29,8 @@ func _process(delta: float) -> void:
 		StuckRotation = rotation
 		StuckPosition = global_position
 		velocity.y += 1000 * delta 
+		velocity += Finder.GetGame().GetAirForce() * delta
+		print(str(Finder.GetGame().GetAirForce()))
 		MoveAndCollide(delta)
 
 func MoveAndCollide(delta: float) -> void:
@@ -42,11 +45,10 @@ func Stop():
 	if bCanUse == false:
 		return
 		
+	constant_force = Vector2.ZERO
 	set_physics_process(false)
 	set_process(false)
 	bCanUse = false
-	
-	print("hit")
 	
 	global_position = StuckPosition
 	global_rotation = StuckRotation

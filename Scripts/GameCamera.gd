@@ -15,6 +15,9 @@ var CurrentMode = MODE.AUTO
 func Focus(obj):
 	ObjectToFocus = obj
 	
+func ZoomIn():
+	$AnimationPlayer.play("FocusIn")
+	
 func _process(delta: float) -> void:
 	ProcessManual(delta)
 	
@@ -52,7 +55,6 @@ func ProcessAuto(delta):
 		var cameraSpeed = 0
 		if distance > 0:
 			cameraSpeed = lerp(10, FollowSpeed, distance / 1000)
-		print(cameraSpeed)
 		if distance > cameraSpeed * delta:
 			var dir = (ObjectToFocus.global_position - global_position).normalized()
 			global_position += dir * cameraSpeed * delta

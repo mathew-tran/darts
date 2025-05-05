@@ -16,6 +16,7 @@ func OnArrowPlaced(newPosition):
 	Finder.GetCamera().Focus(self)
 	SpawnArrow()
 	Finder.GetCamera().SetToAuto()
+	Finder.GetGame().DetermineAirSpeed()
 	
 func _ready() -> void:
 	OnArrowPlaced(global_position)
@@ -52,5 +53,6 @@ func _input(event: InputEvent) -> void:
 			$Arrow.Release(power)
 			ArrowRef = null
 			Finder.GetCamera().SetToAuto()
+			Finder.GetGame().Swing()
 		bIsDrawing = false
 		$DrawTimer.stop()

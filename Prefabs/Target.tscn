@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3k28vv61vb0t"]
+[gd_scene load_steps=6 format=3 uid="uid://b3k28vv61vb0t"]
 
 [ext_resource type="Script" uid="uid://b0ufy8ipdctua" path="res://Scripts/Target.gd" id="1_emdnn"]
 [ext_resource type="Texture2D" uid="uid://ctwkv7fxvbix5" path="res://Art/Target.png" id="1_lrryy"]
+[ext_resource type="Shader" uid="uid://yixxbalem4e8" path="res://Prefabs/Target.gdshader" id="2_4d8ul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2r8j7"]
+shader = ExtResource("2_4d8ul")
+shader_parameter/time = 0.0
+shader_parameter/shard_size = 16.0
+shader_parameter/explode_strength = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbw6q"]
 size = Vector2(60, 60)
@@ -11,6 +18,7 @@ collision_mask = 2
 script = ExtResource("1_emdnn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2r8j7")
 texture = ExtResource("1_lrryy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
