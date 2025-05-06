@@ -6,6 +6,7 @@ var bIsDrawing = false
 
 var ArrowRef = null
 
+var bIsActive = false
 
 func SpawnArrow():
 	var instance = load("res://Prefabs/Arrow.tscn").instantiate()
@@ -32,6 +33,14 @@ func _process(delta: float) -> void:
 	look_at(mousePos)
 	UpdateLine()
 	
+	if Input.is_action_pressed("click") and bIsActive:
+		$DrawLine.points[1] = to_local(get_global_mouse_position())
+		var width = lerp(4, 1, $DrawTimer.time_left / $DrawTimer.wait_time)
+		$DrawLine.default_color = lerp(Color.RED, Color.WHITE, $DrawTimer.time_left / $DrawTimer.wait_time)
+		$DrawLine.width = width
+	else:
+		$DrawLine.points[1] = Vector2.ZERO
+	
 func UpdateLine():
 	var progress = 0
 	if bIsDrawing:
@@ -48,10 +57,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") and bIsDrawing == false:
 		bIsDrawing = true
 		$DrawTimer.start()
-		
+		bIsActive = true
+	
+
+			
 	if event.is_action_pressed("right_click"):
 		bIsDrawing = false
 		$DrawTimer.stop()
+		bIsActive = false
 		
 	if event.is_action_released("click"):
 		var power = lerp(100, 1, $DrawTimer.time_left / $DrawTimer.wait_time)
@@ -60,4 +73,6 @@ func _input(event: InputEvent) -> void:
 			ArrowRef = null
 			Finder.GetGame().Swing()
 		bIsDrawing = false
+		bIsActive = false
 		$DrawTimer.stop()
+		
