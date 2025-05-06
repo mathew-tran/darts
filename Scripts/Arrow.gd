@@ -15,13 +15,13 @@ func _ready() -> void:
 	$CollisionShape2D.disabled = true
 
 func Release(power):
-
 	freeze = false
 	$CollisionShape2D.disabled = false
 	velocity = global_transform.x * power * 20
 	print("release: " + str(power))
-	reparent(Finder.GetItemGroup(), true)
 	Finder.GetCamera().Focus(self)
+	reparent(Finder.GetItemGroup(), true)
+
 
 func _process(delta: float) -> void:
 	if not sleeping and velocity.length() > 0:

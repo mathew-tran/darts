@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ebfxpma2thba"]
+
+[ext_resource type="Texture2D" uid="uid://dtu2i1kqmrb7j" path="res://Art/Ground.png" id="1_c20pd"]
+[ext_resource type="PackedScene" uid="uid://b3k28vv61vb0t" path="res://Prefabs/Target.tscn" id="2_e1vmr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idj7w"]
+texture = ExtResource("1_c20pd")
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_kln2b"]
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_idj7w")
+
+[node name="Hole1" type="TileMapLayer"]
+tile_set = SubResource("TileSet_kln2b")
+
+[node name="Target" parent="." instance=ExtResource("2_e1vmr")]
+position = Vector2(701, 196)

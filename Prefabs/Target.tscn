@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://yixxbalem4e8" path="res://Prefabs/Target.gdshader" id="2_4d8ul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2r8j7"]
+resource_local_to_scene = true
 shader = ExtResource("2_4d8ul")
 shader_parameter/time = 0.0
 shader_parameter/shard_size = 16.0

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CourseData" load_steps=5 format=3 uid="uid://dngvjeifenyr7"]
+
+[ext_resource type="Script" uid="uid://dcg3wgopp1rrx" path="res://Data/LevelData.gd" id="1_ui80m"]
+[ext_resource type="Resource" uid="uid://brhbantsc2ktu" path="res://Data/Levels/L1_H1.tres" id="2_1rv7y"]
+[ext_resource type="Script" uid="uid://kt4i2q5ph5w8" path="res://Data/CourseData.gd" id="2_yvjbm"]
+[ext_resource type="Resource" uid="uid://oaqs2pa13wpi" path="res://Data/Levels/L1_H2.tres" id="3_1rv7y"]
+
+[resource]
+script = ExtResource("2_yvjbm")
+CourseName = "Basic"
+Levels = Array[ExtResource("1_ui80m")]([ExtResource("2_1rv7y"), ExtResource("3_1rv7y")])
+metadata/_custom_type_script = "uid://kt4i2q5ph5w8"

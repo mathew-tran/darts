@@ -12,8 +12,13 @@ enum MODE {
 
 var CurrentMode = MODE.AUTO
 
-func Focus(obj):
+signal HasFocusedOnScreen
+
+var bForced = false
+func Focus(obj, bHasBeenForced = false):
 	ObjectToFocus = obj
+	bForced = bHasBeenForced
+	SetToAuto()
 	
 func ZoomIn():
 	$AnimationPlayer.play("FocusIn")
@@ -29,6 +34,9 @@ func SetToAuto():
 	CurrentMode = MODE.AUTO
 	
 func ProcessManual(delta):
+	if bForced:
+		CurrentMode = MODE.AUTO
+		return
 	var moveVector = Vector2.ZERO
 	if Input.is_action_pressed("Left"):
 		CurrentMode = MODE.MANUAL
@@ -60,4 +68,6 @@ func ProcessAuto(delta):
 			global_position += dir * cameraSpeed * delta
 		else:
 			global_position = ObjectToFocus.global_position
+			HasFocusedOnScreen.emit()
+			ObjectToFocus = null
 	

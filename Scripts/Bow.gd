@@ -1,8 +1,11 @@
 extends Sprite2D
 
+class_name Bow
+
 var bIsDrawing = false
 
 var ArrowRef = null
+
 
 func SpawnArrow():
 	var instance = load("res://Prefabs/Arrow.tscn").instantiate()
@@ -15,7 +18,6 @@ func OnArrowPlaced(newPosition):
 	global_position = newPosition
 	Finder.GetCamera().Focus(self)
 	SpawnArrow()
-	Finder.GetCamera().SetToAuto()
 	Finder.GetGame().DetermineAirSpeed()
 	
 func _ready() -> void:
@@ -24,6 +26,8 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
+	if Finder.GetGame().bLevelComplete:
+		return
 	var mousePos = get_global_mouse_position()
 	look_at(mousePos)
 	UpdateLine()
@@ -38,10 +42,12 @@ func UpdateLine():
 	$Line2D.points[1].x = progress
 
 func _input(event: InputEvent) -> void:
+	if Finder.GetGame().bLevelComplete:
+		return
+		
 	if event.is_action_pressed("click") and bIsDrawing == false:
 		bIsDrawing = true
 		$DrawTimer.start()
-		Finder.GetCamera().SetToAuto()
 		
 	if event.is_action_pressed("right_click"):
 		bIsDrawing = false
@@ -52,7 +58,6 @@ func _input(event: InputEvent) -> void:
 		if is_instance_valid(ArrowRef) and bIsDrawing:
 			$Arrow.Release(power)
 			ArrowRef = null
-			Finder.GetCamera().SetToAuto()
 			Finder.GetGame().Swing()
 		bIsDrawing = false
 		$DrawTimer.stop()
