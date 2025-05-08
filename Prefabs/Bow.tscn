@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://sqbjdqtrvb8b"]
+[gd_scene load_steps=4 format=3 uid="uid://sqbjdqtrvb8b"]
 
 [ext_resource type="Texture2D" uid="uid://db848vsjmb6eh" path="res://Art/Bow.png" id="1_gose6"]
 [ext_resource type="Script" uid="uid://dsrkbvyo3qyhr" path="res://Scripts/Bow.gd" id="2_a3bfb"]
+[ext_resource type="Texture2D" uid="uid://cn6uf0dys20i2" path="res://Art/WindArrow.png" id="3_gose6"]
 
 [node name="Bow" type="Sprite2D" groups=["Bow"]]
 texture = ExtResource("1_gose6")
@@ -20,6 +21,33 @@ one_shot = true
 [node name="SpawnPosition" type="Node2D" parent="."]
 
 [node name="DrawLine" type="Line2D" parent="."]
+z_index = 2
+z_as_relative = false
 position = Vector2(12, 0)
 points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 1, 1, 1)
+
+[node name="BounceTimer" type="Timer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 2
+z_as_relative = false
+offset_left = -63.0
+offset_right = 80.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_gose6")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_gose6")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_gose6")
+
+[connection signal="timeout" from="DrawTimer" to="." method="_on_draw_timer_timeout"]
+[connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]

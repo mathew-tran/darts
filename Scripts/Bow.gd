@@ -8,6 +8,8 @@ var ArrowRef = null
 
 var bIsActive = false
 
+var Bounces = 0
+var MaxBounces = 3
 func SpawnArrow():
 	var instance = load("res://Prefabs/Arrow.tscn").instantiate()
 	add_child(instance)
@@ -23,6 +25,7 @@ func OnArrowPlaced(newPosition):
 	
 func _ready() -> void:
 	OnArrowPlaced(global_position)
+	Redraw()
 	
 	
 	
@@ -40,6 +43,7 @@ func _process(delta: float) -> void:
 		$DrawLine.width = width
 	else:
 		$DrawLine.points[1] = Vector2.ZERO
+	$HBoxContainer.global_position = get_global_mouse_position()
 	
 func UpdateLine():
 	var progress = 0
@@ -62,17 +66,42 @@ func _input(event: InputEvent) -> void:
 
 			
 	if event.is_action_pressed("right_click"):
-		bIsDrawing = false
-		$DrawTimer.stop()
-		bIsActive = false
+		Redraw()
 		
 	if event.is_action_released("click"):
 		var power = lerp(100, 1, $DrawTimer.time_left / $DrawTimer.wait_time)
 		if is_instance_valid(ArrowRef) and bIsDrawing:
+			
+			var percent = GetBouncePercent()
+			$Arrow.Bounces = Bounces
+				
+			print(str(percent) + ", bounces: " + str(Bounces))
 			$Arrow.Release(power)
 			ArrowRef = null
 			Finder.GetGame().Swing()
-		bIsDrawing = false
-		bIsActive = false
-		$DrawTimer.stop()
+		Redraw()
 		
+func GetBouncePercent():
+	return $BounceTimer.time_left / $BounceTimer.wait_time
+
+func Redraw():
+	bIsDrawing = false
+	bIsActive = false
+	$DrawTimer.stop()
+	$BounceTimer.stop()
+	Bounces = 0
+	UpdateUI()
+	
+func _on_draw_timer_timeout() -> void:
+	$BounceTimer.start()
+	Bounces = 0
+
+
+func _on_bounce_timer_timeout() -> void:
+	if Bounces < MaxBounces:
+		Bounces += 1
+	UpdateUI()
+
+func UpdateUI():
+	for x in range(0, len($HBoxContainer.get_children())):
+		$HBoxContainer.get_child(x).visible = x < Bounces

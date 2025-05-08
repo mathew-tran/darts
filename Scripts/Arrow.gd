@@ -8,6 +8,8 @@ signal OnArrowPlaced(hitPosition)
 var bCanUse = true
 var velocity = Vector2.ZERO
 
+var Bounces = 0
+
 
 func _ready() -> void:
 	# Initial setup
@@ -30,7 +32,6 @@ func _process(delta: float) -> void:
 		StuckPosition = global_position
 		velocity.y += 1000 * delta 
 		velocity += Finder.GetGame().GetAirForce() * delta
-		print(str(Finder.GetGame().GetAirForce()))
 		MoveAndCollide(delta)
 
 func MoveAndCollide(delta: float) -> void:
@@ -39,8 +40,21 @@ func MoveAndCollide(delta: float) -> void:
 	var collision = move_and_collide(motion)
 	
 	if collision:
-		Stop()
+		if CanBounce():
+			Bounce(collision)
+		else:
+			Stop()
 
+func CanBounce():
+	return Bounces > 0
+	
+func Bounce(collision):
+	if $CanBounceTimer.time_left == 0.0:
+		$CanBounceTimer.start()
+		Bounces -= 1
+		velocity = velocity.bounce(collision.get_normal()) * 1
+	
+	
 func Stop():
 	if bCanUse == false:
 		return
