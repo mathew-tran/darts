@@ -16,6 +16,8 @@ func OnHasFocusedOnScreen():
 	Finder.GetCamera().HasFocusedOnScreen.disconnect(OnHasFocusedOnScreen)
 	
 func _on_body_entered(body: Node2D) -> void:
+	if bIsHit:
+		return
 	var contactPoint = ( global_position - body.global_position).normalized()
 	$Sprite2D.material.set_shader_parameter("impact_uv", contactPoint)
 	Finder.GetGame().LevelComplete()

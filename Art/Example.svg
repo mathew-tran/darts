@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="3.0135764"
-     inkscape:cx="423.08534"
-     inkscape:cy="436.35861"
+     inkscape:zoom="17.047362"
+     inkscape:cx="363.16468"
+     inkscape:cy="554.22063"
      inkscape:window-width="1368"
      inkscape:window-height="842"
      inkscape:window-x="-6"
@@ -34,11 +34,56 @@
      inkscape:current-layer="layer1"
      showgrid="false" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect13"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#a05a2c;stroke-width:0.591136"
+       id="rect14"
+       width="8.4666662"
+       height="8.4666662"
+       x="97.289948"
+       y="143.96802"
+       inkscape:export-filename="Ground2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#a05a2c;stroke-width:0.591136"
+       id="rect13"
+       width="8.4666662"
+       height="8.4666662"
+       x="87.961548"
+       y="143.96802"
+       inkscape:export-filename="Ground1.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <rect
        style="fill:none;stroke-width:0.352981"
        id="rect9"
@@ -182,6 +227,20 @@
        inkscape:transform-center-y="0.019013575"
        d="m 122.77773,98.877465 0.0225,2.045365 h -6.45577 v 1.92966 h 6.47706 l 0.0222,2.04441 2.59007,-1.53355 2.58983,-1.53331 -2.62296,-1.47629 z"
        inkscape:export-filename="WindArrow.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="rect12"
+       style="fill:#008000;fill-opacity:1;stroke-width:0.591136"
+       d="m 97.332342,143.96796 c -0.0141,0.0168 -0.0291,0.0325 -0.04238,0.0501 v 1.50844 c 0.03959,0.0323 0.09634,0.0471 0.255282,0.0868 0.248328,0.0621 0.745265,0.18628 1.337386,0.14573 0.59212,-0.0405 1.28823,-0.24873 1.90531,-0.18707 0.61707,0.0617 1.15482,0.393 1.73943,0.6258 0.58461,0.23281 1.21592,0.36757 1.68671,0.2434 0.4708,-0.12416 0.78109,-0.50719 1.0139,-0.75034 0.23281,-0.24316 0.38793,-0.34685 0.52761,-0.71417 3.7e-4,-9.6e-4 6.7e-4,-0.002 0.001,-0.003 v -0.92759 c -0.016,-0.0267 -0.0344,-0.0526 -0.0548,-0.078 z"
+       inkscape:export-filename="Ground2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="path12"
+       style="fill:#008000;stroke:none;stroke-width:0.264583"
+       d="m 87.961549,143.96795 v 1.53583 c 0.141134,0.0908 0.321921,0.17308 0.560173,0.22324 0.589787,0.12416 1.521148,0.0519 2.157491,-0.13436 0.636343,-0.18625 0.97771,-0.48627 1.438155,-0.49661 0.460445,-0.0103 1.039491,0.26906 1.701705,0.42426 0.662214,0.15521 1.407476,0.18614 2.0283,0.10336 0.211489,-0.0282 0.40656,-0.0709 0.580843,-0.12713 v -1.52859 z"
+       inkscape:export-filename="Ground1.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </g>

@@ -10,6 +10,7 @@ var bIsActive = false
 
 var Bounces = 0
 var MaxBounces = 3
+var LastValidPosition = Vector2.ZERO
 func SpawnArrow():
 	var instance = load("res://Prefabs/Arrow.tscn").instantiate()
 	add_child(instance)
@@ -24,6 +25,7 @@ func OnArrowPlaced(newPosition):
 	Finder.GetGame().DetermineAirSpeed()
 	
 func _ready() -> void:
+	LastValidPosition = global_position
 	OnArrowPlaced(global_position)
 	Redraw()
 	
@@ -105,3 +107,24 @@ func _on_bounce_timer_timeout() -> void:
 func UpdateUI():
 	for x in range(0, len($HBoxContainer.get_children())):
 		$HBoxContainer.get_child(x).visible = x < Bounces
+
+
+func _on_overlap_check_body_entered(body: Node2D) -> void:
+	var closestPosition = GetClosestOpenPosition()
+	if closestPosition == global_position:
+		closestPosition = LastValidPosition
+	else:
+		LastValidPosition = closestPosition
+	global_position = closestPosition
+
+func GetClosestOpenPosition():
+	$RayCast2D.target_position = Vector2.RIGHT * 20
+	var crossSections = 12
+	for x in range(0, crossSections):
+		
+		$RayCast2D.force_raycast_update()
+		if $RayCast2D.get_collider() == null:
+			return $RayCast2D.global_position + $RayCast2D.target_position
+		$RayCast2D.rotation_degrees += 360 / crossSections
+	print("Could not find an open position")
+	return global_position
