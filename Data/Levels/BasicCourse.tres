@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="CourseData" load_steps=8 format=3 uid="uid://dngvjeifenyr7"]
+[gd_resource type="Resource" script_class="CourseData" load_steps=10 format=3 uid="uid://dngvjeifenyr7"]
 
 [ext_resource type="Script" uid="uid://dcg3wgopp1rrx" path="res://Data/LevelData.gd" id="1_ui80m"]
 [ext_resource type="Resource" uid="uid://brhbantsc2ktu" path="res://Data/Levels/L1_H1.tres" id="2_1rv7y"]
 [ext_resource type="Resource" uid="uid://dpyn4tplhbwbq" path="res://Data/Levels/L1_H5.tres" id="2_8mqgk"]
 [ext_resource type="Resource" uid="uid://4e8ldqk86yyy" path="res://Data/Levels/L1_H3.tres" id="2_mkwph"]
+[ext_resource type="Resource" uid="uid://d0acoyfiskcvd" path="res://Data/Levels/L1_H6.tres" id="2_pem8m"]
+[ext_resource type="Resource" uid="uid://c6r5p2w1lri70" path="res://Data/Levels/L1_H7.tres" id="2_wm76h"]
 [ext_resource type="Resource" uid="uid://dg1bgnhooyo0t" path="res://Data/Levels/L1_H4.tres" id="2_ys51t"]
 [ext_resource type="Script" uid="uid://kt4i2q5ph5w8" path="res://Data/CourseData.gd" id="2_yvjbm"]
 [ext_resource type="Resource" uid="uid://oaqs2pa13wpi" path="res://Data/Levels/L1_H2.tres" id="3_1rv7y"]
@@ -11,5 +13,5 @@
 [resource]
 script = ExtResource("2_yvjbm")
 CourseName = "Basic"
-Levels = Array[ExtResource("1_ui80m")]([ExtResource("2_1rv7y"), ExtResource("3_1rv7y"), ExtResource("2_mkwph"), ExtResource("2_ys51t"), ExtResource("2_8mqgk")])
+Levels = Array[ExtResource("1_ui80m")]([ExtResource("2_1rv7y"), ExtResource("3_1rv7y"), ExtResource("2_mkwph"), ExtResource("2_ys51t"), ExtResource("2_8mqgk"), ExtResource("2_pem8m"), ExtResource("2_wm76h")])
 metadata/_custom_type_script = "uid://kt4i2q5ph5w8"

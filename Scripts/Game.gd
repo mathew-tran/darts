@@ -11,6 +11,7 @@ var AirDirection = Vector2.ZERO
 var AirSpeed = 10
 
 signal AirUpdate
+signal LevelStarted
 
 var LevelReference = null
 var bLevelComplete = false
@@ -27,6 +28,8 @@ func StartLevel(data : LevelData):
 	var instance = data.Scene.instantiate()
 	add_child(instance)
 	LevelReference = instance
+	LevelStarted.emit()
+	
 	
 func GetNextLevel():
 		var nextCourse = CourseDataReference.GetLevel(Index)

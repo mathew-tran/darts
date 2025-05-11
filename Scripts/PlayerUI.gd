@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready() -> void:
 	Finder.GetGame().SwingUpdate.connect(OnSwingUpdate)
 	Finder.GetGame().AirUpdate.connect(OnAirUpdate)
+	Finder.GetGame().LevelStarted.connect(OnLevelStarted)
 	
 func OnSwingUpdate(amount):
 	$VBoxContainer2/Stroke.text = str(amount)
@@ -16,3 +17,6 @@ func OnAirUpdate():
 	WindStrengthLabel.text = str(floor(Finder.GetGame().AirSpeed))
 	var progress = Finder.GetGame().AirSpeed / 800.0
 	WindDirectionTexture.modulate = lerp(Color.WHITE, Color.RED, progress)
+
+func OnLevelStarted():
+	$VBoxContainer/ParLimit.text = str(Finder.GetGame().Par)
